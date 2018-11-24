@@ -1,18 +1,20 @@
 <template>
   <div id="app">
     <!--<HelloWorld msg="Welcome to Your Vue.js App"/>-->
-    <Register/>
+    <register/>
+    <Login/>
   </div>
 </template>
 
 <script>
-import Welcome from './components/Welcome.vue'
 import Register from './components/Register.vue'
+import Login from './components/Login.vue'
+
 export default {
   name: 'app',
   components: {
-    Welcome,
-    Register
+    Register,
+    Login
   }
 }
 </script>

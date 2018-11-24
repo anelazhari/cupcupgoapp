@@ -12,7 +12,11 @@ export default {
                     resolve(response);
                 })
                 .catch(function (error) {
-                    reject(error);
+                    if (error.response) {
+                        reject(error.response.data.error);
+                      } else {
+                        reject();
+                      }
                 });
         })
     },
@@ -23,10 +27,14 @@ export default {
                 password: password
             })
                 .then(function (response) {
-                    resolve(response);
+                    resolve(response.data);
                 })
                 .catch(function (error) {
-                    reject(error);
+                    if (error.response) {
+                        reject(error.response.data.error);
+                      } else {
+                        reject();
+                      }
                 });
         })
     }
