@@ -3,10 +3,10 @@
     <h1>Welcome!</h1>
 
     <div class="register">
-       <button type="button">Register</button> 
+       <button type="button" @click="goRegister">Register</button> 
     </div>
     <div class="login">
-      <button type="button">Login</button> 
+      <button type="button" @click="goLogin">Login</button> 
     </div>
   </div>
 </template>
@@ -17,7 +17,15 @@ export default {
   props: {
     msg: String
   },
-  components: {}
+  components: {},
+  methods: {
+    goRegister: function () {
+      this.$router.push('/Register');
+    },
+    goLogin: function () {
+      this.$router.push('/Login')
+    },
+  }
 };
 </script>
 

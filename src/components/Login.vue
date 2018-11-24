@@ -13,6 +13,9 @@
     <div class="submit">
         <button type="submit" @click="loginUser">Login!</button>
     </div>
+    <div class="home">
+        <button type="submit" @click="goHome">Back</button>
+    </div>
     <div class="error">
         <p>{{errorMessage}}</p>
         <p>Account: {{this.accountId}}</p>
@@ -64,6 +67,9 @@ export default {
                 return false;               
             }
             return true;
+        },
+        goHome: function () {
+            this.$router.push('/')
         }
   }
 };
