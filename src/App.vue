@@ -29,6 +29,14 @@ body {
   text-align: center;
   color: #2c3e50;
   max-height:100vh;
-
 }
+
+.button-menu {
+  margin-top: 5vh;
+  padding: 15px 15px;
+  border-radius: 15px;
+  margin-left: -75%;
+  background-image: url("./assets/back_arrow.png");
+  background-size: cover;
+};
 </style>
