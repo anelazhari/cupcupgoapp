@@ -3,12 +3,12 @@
     <h1>Welcome!</h1>
 
     <div class="action-buttons">
-    <div class="register">
-       <button type="button" @click="goRegister">Register</button> 
-    </div>
-    <div class="login">
-      <button type="button" @click="goLogin">Login</button> 
-    </div>
+      <div class="register">
+        <button type="button" @click="goRegister">Register</button> 
+      </div>
+      <div class="login">
+        <button type="button" @click="goLogin">Login</button> 
+      </div>
     </div>
   </div>
 </template>
@@ -39,21 +39,11 @@ h1 {
   font-weight: bold;
   color: white;
 }
-.register {
-  margin: 10px;
-}
 
-.register button {
+button {
+  margin: 10px;
   padding: 10px 40px;
   border-radius: 15px;
-}
-.login {
-  margin: 10px;
-}
-.login button {
-  padding: 10px 40px;
-  border-radius: 15px;
-
 }
 
 .action-buttons {

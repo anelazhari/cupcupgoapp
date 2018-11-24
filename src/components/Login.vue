@@ -1,23 +1,25 @@
 <template>
   <div class="login">
+
+    <div class="home">
+        <button class="button-menu" type="submit" @click="goHome"></button>
+    </div>
+
     <h1>Login</h1>
 
-    <div class="email">
-        <label for="email">Email: </label>
-        <input v-model="email" id="email" type="text" placeholder="kimi@f1.com"/> 
-    </div>
-    <div class="password">
-        <label for="password">Password: </label>
-        <input v-model="password" id="password" type="password"/> 
-    </div>
-    <div class="submit">
-        <button type="submit" @click="loginUser">Login!</button>
-    </div>
-    <div class="home">
-        <button type="submit" @click="goHome">Back</button>
-    </div>
-    <div class="error">
-        <p>{{errorMessage}}</p>
+    <div class="action-area">
+        <div class="email">
+            <input v-model="email" id="email" type="text" placeholder="Username"/> 
+        </div>
+        <div class="password">
+            <input v-model="password" id="password" type="password" placeholder="Password"/> 
+        </div>
+        <div class="submit">
+            <button type="submit" @click="loginUser">Login!</button>
+        </div>
+        <div class="error">
+            <p>{{errorMessage}}</p>
+        </div>
     </div>
   </div>
 </template>
@@ -83,4 +85,33 @@ export default {
 .error {
     color: red;
 }
+
+input {
+    margin: 0 auto;
+    border: none; /* <-- This thing here */
+    border:solid 1px #ccc;
+    border-radius: 20px;
+    padding: 2vh 8vh;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+.action-area {
+  margin-top: 40vh;
+}
+
+.action-area button {
+  margin: 10px;
+  padding: 10px 40px;
+  border-radius: 15px;
+}
+
+.button-menu {
+  margin-top: 5vh;
+  padding: 15px 15px;
+  border-radius: 15px;
+  margin-left: -50vh;
+};
+
+
 </style>
