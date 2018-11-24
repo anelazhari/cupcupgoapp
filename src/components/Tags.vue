@@ -9,7 +9,7 @@
                     {{ item.name }}
                 </td>
                 <td>
-                    <button @click="deleteTag">Delete</button>
+                    <button @click="deleteTag(item.tag_number)">Delete</button>
                 </td>
 
             </tr>
@@ -74,8 +74,13 @@ export default {
     addTag: function () {
         this.$router.push('/Tag/New');
     },
-    deleteTag: function (tagId){
-
+    deleteTag: function (tagNumber){
+        backendAPI.deleteTag(this.accountId, tagNumber).then(() => {
+           this.getTags();
+        }).catch((error) => {
+            this.errorMessage = error || 'An unforseen error happened please try again';
+            this.password = null;
+        });        
     }
 
   }

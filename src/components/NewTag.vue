@@ -65,7 +65,7 @@ export default {
             return;
         }
         backendAPI.newTag(this.accountId, this.tagName, this.tagNumber).then(() => {
-            
+            this.$router.push('/Tags');
         }).catch((error) => {
             this.errorMessage = error || 'An unforseen error happened please try again';
             this.password = null;
