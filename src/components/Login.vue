@@ -41,6 +41,7 @@ export default {
   components: {},
   methods: {
         loginUser: function() {
+            let vm = this;
             this.errorMessage = null;  // Empty the error message
 
             // Check valid email and password lenght
@@ -51,6 +52,7 @@ export default {
             backendAPI.login(this.email, this.password).then((data) => {
                 this.errorMessage = 'YEAH BABY!';
                 this.accountId = data.accountId
+                this.$router.push('/Activities');
             }).catch((error) => {
                 this.errorMessage = error || 'An unforseen error happened please try again';
                 this.password = null;
