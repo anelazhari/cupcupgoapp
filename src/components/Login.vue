@@ -54,8 +54,9 @@ export default {
             backendAPI.login(this.email, this.password).then((data) => {
                 // this.errorMessage = 'YEAH BABY!';
 
-                this.$session.start()
-                this.$session.set('accountId', data.accountId)
+                this.$session.start();
+                this.$session.set('accountId', data.accountId);
+                this.$session.set('username', this.email);
     
                 this.$router.push('/Activities');
             }).catch((error) => {

@@ -3,25 +3,22 @@
     <h1>New Tag</h1>
 
     <div class="email">
-        <label for="email">Tag Name: </label>
-        <input v-model="tagName" id="tagName" type="text" placeholder="TaggyTag"/> 
+        <input v-model="tagName" id="tagName" type="text" placeholder="Tag Name"/> 
     </div>
     <div class="tagnumber">
-        <label for="tagNumber">Tag Number:</label>
-        <input v-model="tagNumber" id="tagNumber" type="text"/> 
+        <input v-model="tagNumber" id="tagNumber" type="text" placeholder="Tag Number"/> 
     </div>
 
 
     <div>
-        <button @click="saveTag">Save</button>
+        <button @click="saveTag" class="save">Save</button>
     </div>
 
 
     <div class="error">{{errorMessage}}</div>
 
     <div class="navigation">
-        <button @click="goBack">Back</button>
-
+        <button @click="goBack" class="button-menu"></button>
     </div>
 
     
@@ -82,5 +79,30 @@ export default {
 <style scoped>
 .error {
     color:red;
+}
+.navigation {
+    position: absolute;
+    top: 0px;
+    left: 50px;
+}
+input {
+    margin: 0 auto;
+    border: none; /* <-- This thing here */
+    border:solid 1px #ccc;
+    border-radius: 20px;
+    padding: 2vh 8vh;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+label {
+    display: block;
+}
+
+.save {
+  margin: 10px;
+  margin-top: 50vh;
+  padding: 10px 40px;
+  border-radius: 15px;
 }
 </style>

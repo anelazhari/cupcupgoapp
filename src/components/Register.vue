@@ -53,6 +53,7 @@ export default {
                 this.errorMessage = 'YEAH BABY!';
                 this.$session.start()
                 this.$session.set('accountId', data.accountId)
+                this.$session.set('username', this.email);
                 this.$router.push('/Activities');
             }).catch((error) => {
                 this.errorMessage = error || 'An unforseen error happened please try again';

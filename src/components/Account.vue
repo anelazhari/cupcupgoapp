@@ -4,11 +4,11 @@
 
     
     <div class="balance">Balance €{{balance}}</div>
-    <button @click="logOut">Logout</button>
+    <button @click="logOut" class="logoutbutton">Logout</button>
     <div class="error">{{errorMessage}}</div>
 
     <div class="navigation">
-        <button @click="goBack">Back</button>
+        <button @click="goBack" class="button-menu"></button>
     </div>
 
     
@@ -17,7 +17,7 @@
 </template>
 
 <script>
-// import backendAPI from '../api/payment';
+import backendAPI from '../api/payment';
 
 export default {
   name: "Account",
@@ -26,9 +26,8 @@ export default {
   },
   data: function () {
       return {
-          userName: 'Sara',
           errorMessage: null,
-          balance: 16
+          balance: null
       }
   },
   beforeCreate: function () {
@@ -36,10 +35,16 @@ export default {
         this.$router.push('/')
     }
   },
+  mounted: function () {
+      this.getBalance();
+  },
   computed: {
       accountId: function () {
           return this.$session.get('accountId');
-      }    
+      },
+      userName: function () {
+          return this.$session.get('username');
+      }  
   },
   methods: {
     goBack: function () {
@@ -48,11 +53,36 @@ export default {
     logOut: function () {
         this.$session.destroy()
         this.$router.push('/')
-    }
+    },
+    getBalance: function () {
+        backendAPI.activities(this.accountId).then((data) => {
+            this.balance = data.balance / 100;
+        }).catch((error) => {
+            this.errorMessage = error || 'An unforseen error happened please try again';
+        });
+      },
   },
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.balance {
+    padding-top: 20%;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.logoutbutton {
+  margin: 10px;
+  margin-top: 50vh;
+  padding: 10px 40px;
+  border-radius: 15px;
+}
+
+.navigation {
+    position: absolute;
+    top: 0px;
+    left: 50px;
+}
 </style>

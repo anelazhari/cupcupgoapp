@@ -1,11 +1,17 @@
 <template>
    <div class="main">
+    <Slide>
+      <a id="tags" @click="goTags"> 
+        <span>Tags</span>  
+      </a>
+      <a id="account" @click="goAccount"> 
+        <span>Account</span>  
+      </a>
+    </Slide>
+
       <h1>Activity</h1>
       <div class="error">{{errorMessage}}</div>
-      <div class="navigation">
-         <button @click="goAccount">Account</button>
-         <button @click="goTags">Tags</button>
-      </div>
+
       <img src="../assets/histogram.png" class="histogram">
       <div class="activities">
          <table>
@@ -34,11 +40,15 @@
 
 <script>
 import backendAPI from '../api/payment';
+import { Slide } from 'vue-burger-menu'
 
 export default {
   name: "Activities",
   props: {
     msg: String
+  },
+  components: {
+      Slide
   },
   beforeCreate: function () {
     if (!this.$session.exists()) {
@@ -120,5 +130,26 @@ h1 {
 
 .drinkimage {
     max-width: 30%;
+}
+
+.button-tags {
+  position: absolute;
+  top: 5px;
+  left: 0px;
+  padding: 20px 20px;
+  border-radius: 20px;
+
+  background-image: url("../assets/tags.png");
+  background-size: cover;
+}
+
+.buttonaccount {
+  position: absolute;
+  left:0px;
+  top:10%;
+  padding: 20px 20px;
+  border-radius: 20px;
+   background-image: url("../assets/profile.png");
+   background-size: cover;
 }
 </style>

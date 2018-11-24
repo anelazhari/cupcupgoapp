@@ -5,25 +5,24 @@
     <div class="tags-list">
         <table>
             <tr v-for="item in tagsList" :key="item.id">
-                <td>
+                <td class="name">
                     {{ item.name }}
                 </td>
-                <td>
-                    <button @click="deleteTag(item.tag_number)">Delete</button>
+                <td class="delete">
+                    <button @click="deleteTag(item.tag_number)">x</button>
                 </td>
-
             </tr>
         </table>
     </div>
     <div>
-        <button @click="addTag">Add Tag</button>
+        <button @click="addTag" class="add-tag-button">Add Tag</button>
     </div>
 
 
     <div class="error">{{errorMessage}}</div>
 
     <div class="navigation">
-        <button @click="goBack">Back</button>
+        <button @click="goBack" class="button-menu"></button>
 
     </div>
 
@@ -89,4 +88,37 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.add-tag-button {
+  margin: 10px;
+  padding: 10px 40px;
+  border-radius: 15px;    
+}
+
+.navigation {
+    position: absolute;
+    top: 0px;
+    left: 50px;
+}
+
+.tags-list {
+    min-height: 70vh;
+    max-height: 70vh;
+    overflow: scroll;
+}
+
+table {
+    width: 100%;
+    padding: 10px;
+}
+
+.name {
+    min-width: 50%;
+}
+.delete {
+    min-width: 50%;
+}
+.delete button{
+    border-radius: 15px;  
+
+}
 </style>
