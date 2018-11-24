@@ -19,7 +19,7 @@ export default {
     },
     tags(accountId) {
         return new Promise((resolve, reject) => {
-            axios.get(apiURL + 'account/' + accountId + '/tags')
+            axios.get(apiURL + 'account/' + accountId + '/tag')
                 .then(function (response) {
                     resolve(response.data);
                 })

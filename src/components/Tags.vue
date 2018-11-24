@@ -47,6 +47,9 @@ export default {
       this.$router.push('/')
     }
   },
+  mounted: function () {
+    this.getTags();
+  },
   computed: {
       accountId: function () {
           return this.$session.get('accountId');
@@ -55,7 +58,7 @@ export default {
   methods: {
     getTags: function () {
         backendAPI.tags(this.accountId).then((data) => {
-            this.tagsList = data
+            this.tagsList = data.tags
         }).catch((error) => {
             this.errorMessage = error || 'An unforseen error happened please try again';
             this.password = null;
