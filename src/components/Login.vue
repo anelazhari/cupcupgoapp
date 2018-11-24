@@ -12,7 +12,7 @@
             <input v-model="email" id="email" type="text" placeholder="Username"/> 
         </div>
         <div class="password">
-            <input v-model="password" id="password" type="password" placeholder="Password"/> 
+            <input v-model="password" id="password" type="password" placeholder="Type your PIN"/> 
         </div>
         <div class="submit">
             <button type="submit" @click="loginUser">Login!</button>
@@ -105,13 +105,4 @@ input {
   padding: 10px 40px;
   border-radius: 15px;
 }
-
-.button-menu {
-  margin-top: 5vh;
-  padding: 15px 15px;
-  border-radius: 15px;
-  margin-left: -50vh;
-};
-
-
 </style>
