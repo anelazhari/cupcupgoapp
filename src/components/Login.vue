@@ -7,6 +7,8 @@
 
     <h1>Login</h1>
 
+    <img src="../assets/app_logo.png" class="logo">
+
     <div class="action-area">
         <div class="email">
             <input v-model="email" id="email" type="text" placeholder="Username"/> 
@@ -86,6 +88,9 @@ export default {
     color: red;
 }
 
+h1 {
+    color: white;
+}
 input {
     margin: 0 auto;
     border: none; /* <-- This thing here */
@@ -97,12 +102,24 @@ input {
 }
 
 .action-area {
-  margin-top: 40vh;
+padding: 0px;
 }
 
 .action-area button {
   margin: 10px;
   padding: 10px 40px;
   border-radius: 15px;
+}
+
+.logo {
+    margin: 0px;
+    padding: 0px;
+    max-width: 100%;
+}
+
+.home {
+    position: absolute;
+    top: 0px;
+    left: 50px;
 }
 </style>

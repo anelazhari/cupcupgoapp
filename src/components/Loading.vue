@@ -8,6 +8,11 @@ export default {
   props: {
     msg: String
   },
+  mounted: function () {
+    setTimeout(() => {
+      this.$router.push('/Welcome')
+    }, 2000)
+  },
   components: {},
   methods: {
     toWelcome: function () {
