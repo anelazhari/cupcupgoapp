@@ -1,36 +1,33 @@
 <template>
-  <div class="activities">
-    <h1>Recent Activities</h1>
-    <div class="activities">
-        <table>
-            <tr v-for="item in activitiesData" :key="item.id">
-                <td>
-                    {{ item.product_id }}
-                </td>
-                <td>
-                    {{ item.price }}
-                </td>
-                <td>
-                    ${{ item.date}}
-                </td>
-                <td>
-                    
-                </td>
-
+   <div class="main">
+      <h1>Activity</h1>
+      <div class="error">{{errorMessage}}</div>
+      <div class="navigation">
+         <button @click="goAccount">Account</button>
+         <button @click="goTags">Tags</button>
+      </div>
+      <img src="../assets/histogram.png" class="histogram">
+      <div class="activities">
+         <table>
+            <tr v-for="item in activitiesData" class="payment" :key="item.id">
+               <td class="drinkIcons">
+                  <img :src="getPicture(item.type)" class="drinkimage">
+               </td>
+               <td class="drinkData">
+                  <div>
+                     {{ formatDate(item.date)}} 
+                  </div>
+                  <div>
+                     {{ item.product_name }}
+                  </div>
+                  <div class="price">
+                     1 x {{ item.price / 100 }}€
+                  </div>
+               </td>
             </tr>
-        </table>
-    </div>
-
-    <div class="error">{{errorMessage}}</div>
-
-    <div class="navigation">
-        <button @click="goAccount">Account</button>
-        <button @click="goTags">Tags</button>
-    </div>
-
-    
-
-  </div>
+         </table>
+      </div>
+   </div>
 </template>
 
 <script>
@@ -73,11 +70,45 @@ export default {
         }).catch((error) => {
             this.errorMessage = error || 'An unforseen error happened please try again';
         });
-      }
+      },
+    formatDate: function (dateString) {
+        let date = new Date(dateString);
+        return date.getDate() + '.' + ( date.getMonth() + 1 )  + '.' + date.getFullYear();
+    },
+    getPicture: function (drinkType) {
+        return '../assets/' + drinkType + '.png'
+    }
   }
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+h1 {
+    color:white;
+}
+
+.payment {
+    text-align: left;
+    font-weight: bold;
+}
+.drinkIcons {
+    padding-left: 30%;
+    min-width: 55%;
+}
+
+.activities {
+    position: absolute;
+    bottom: 15px;
+    width: 100%;
+}
+
+.histogram {
+    margin-top: 15%;
+    max-width: 90%;
+}
+
+.drinkimage {
+    max-width: 35%;
+}
 </style>

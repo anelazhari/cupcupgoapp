@@ -16,6 +16,7 @@ body {
   margin: 0px;
   background-image: url("./assets/screen 1.png") ;
   background-size:cover;
+  color: white;
 
 }
 

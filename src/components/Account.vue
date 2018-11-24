@@ -3,7 +3,7 @@
     <h1>Hi {{userName}}!</h1>
 
     
-
+    <div class="balance">Balance €{{balance}}</div>
     <button @click="logOut">Logout</button>
     <div class="error">{{errorMessage}}</div>
 
@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import backendAPI from '../api/payment';
+// import backendAPI from '../api/payment';
 
 export default {
   name: "Account",
@@ -27,7 +27,8 @@ export default {
   data: function () {
       return {
           userName: 'Sara',
-          errorMessage: null
+          errorMessage: null,
+          balance: 16
       }
   },
   beforeCreate: function () {
