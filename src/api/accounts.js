@@ -9,7 +9,7 @@ export default {
                 password: password
             })
                 .then(function (response) {
-                    resolve(response);
+                    resolve(response.data);
                 })
                 .catch(function (error) {
                     if (error.response) {

@@ -46,8 +46,11 @@ export default {
                 return;
             }
 
-            backendAPI.register(this.email, this.password).then(() => {
+            backendAPI.register(this.email, this.password).then((data) => {
                 this.errorMessage = 'YEAH BABY!';
+                this.$session.start()
+                this.$session.set('accountId', data.accountId)
+                this.$router.push('/Activities');
             }).catch((error) => {
                 this.errorMessage = error || 'An unforseen error happened please try again';
                 this.password = null;

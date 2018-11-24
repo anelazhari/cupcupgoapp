@@ -42,15 +42,22 @@ export default {
   props: {
     msg: String
   },
+  beforeCreate: function () {
+    if (!this.$session.exists()) {
+        this.$router.push('/')
+    }
+  },
   data: function () {
       return {
-          accountId: 1,
           errorMessage: null
       }
   },
   computed: {
       activitiesData: function () {
           return this.getActivities();
+      },
+      accountId: function () {
+          return this.$session.get('accountId');
       }
   },
   methods: {

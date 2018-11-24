@@ -16,6 +16,11 @@ export default {
   props: {
     msg: String
   },
+  beforeCreate: function () {
+    if (!this.$session.exists()) {
+      this.$router.push('/')
+    }
+  },
   data: function() {
     return {
       message: null

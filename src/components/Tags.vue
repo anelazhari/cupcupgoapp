@@ -38,13 +38,20 @@ export default {
   },
   data: function () {
       return {
-          accountId: 1,
           errorMessage: null
       }
+  },
+  beforeCreate: function () {
+    if (!this.$session.exists()) {
+      this.$router.push('/')
+    }
   },
   computed: {
       tagsList: function () {
           return this.getTags();
+      },
+      accountId: function () {
+          return this.$session.get('accountId');
       }
   },
   methods: {

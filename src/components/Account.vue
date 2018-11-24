@@ -26,17 +26,27 @@ export default {
   },
   data: function () {
       return {
-          accountId: 1,
           userName: 'Sara',
           errorMessage: null
       }
+  },
+  beforeCreate: function () {
+    if (!this.$session.exists()) {
+        this.$router.push('/')
+    }
+  },
+  computed: {
+      accountId: function () {
+          return this.$session.get('accountId');
+      }    
   },
   methods: {
     goBack: function () {
         this.$router.push('/Activities')
     },
     logOut: function () {
-      
+        this.$session.destroy()
+        this.$router.push('/')
     }
   },
 };
