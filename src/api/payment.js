@@ -31,5 +31,38 @@ export default {
                       }
                 });
         })
-    }
+    },
+    newTag(accountId, tagName, tagNumber) {
+        return new Promise((resolve, reject) => {
+            axios.post(apiURL + 'account/' + accountId + '/tags', {
+                'name': tagName,
+                'tag_number': tagNumber
+            })
+                .then(function (response) {
+                    resolve(response.data);
+                })
+                .catch(function (error) {
+                    if (error.response) {
+                        reject(error.response.data.error);
+                      } else {
+                        reject();
+                      }
+                });
+        })
+    },
+    deleteTag(accountId, tagNumber) {
+        return new Promise((resolve, reject) => {
+            axios.delete(apiURL + 'account/' + accountId + '/tags/' + tagNumber)
+                .then(function (response) {
+                    resolve(response.data);
+                })
+                .catch(function (error) {
+                    if (error.response) {
+                        reject(error.response.data.error);
+                      } else {
+                        reject();
+                      }
+                });
+        })
+    },
 }

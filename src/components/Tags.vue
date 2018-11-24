@@ -9,12 +9,16 @@
                     {{ item.name }}
                 </td>
                 <td>
-                    <button>Delete</button>
+                    <button @click="deleteTag(item.tag_number)">Delete</button>
                 </td>
 
             </tr>
         </table>
     </div>
+    <div>
+        <button @click="addTag">Add Tag</button>
+    </div>
+
 
     <div class="error">{{errorMessage}}</div>
 
@@ -65,8 +69,20 @@ export default {
         });
     },
     goBack: function () {
-        this.$router.push('/Activities')
+        this.$router.push('/Activities');
+    },
+    addTag: function () {
+        this.$router.push('/Tag/New');
+    },
+    deleteTag: function (tagNumber){
+        backendAPI.deleteTag(this.accountId, tagNumber).then(() => {
+           this.getTags();
+        }).catch((error) => {
+            this.errorMessage = error || 'An unforseen error happened please try again';
+            this.password = null;
+        });        
     }
+
   }
 };
 </script>
