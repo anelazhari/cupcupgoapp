@@ -38,13 +38,14 @@
 import backendAPI from '../api/payment';
 
 export default {
-  name: "Welcome",
+  name: "Activities",
   props: {
     msg: String
   },
   data: function () {
       return {
-          accountId: 1
+          accountId: 1,
+          errorMessage: null
       }
   },
   computed: {
@@ -63,7 +64,7 @@ export default {
             timestamp: 23434              
           },
                     {
-            id: 0,
+            id: 1,
             amount: 12.5,
             merchantId: 12,
             productId: 1,

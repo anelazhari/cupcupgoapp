@@ -41,7 +41,6 @@ export default {
   components: {},
   methods: {
         loginUser: function() {
-            let vm = this;
             this.errorMessage = null;  // Empty the error message
 
             // Check valid email and password lenght

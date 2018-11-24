@@ -17,4 +17,7 @@ export default {
                 });
         })
     },
+    tags(accountId) {
+        return ;
+    }
 }
