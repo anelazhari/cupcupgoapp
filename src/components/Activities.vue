@@ -11,7 +11,9 @@
          <table>
             <tr v-for="item in activitiesData" class="payment" :key="item.id">
                <td class="drinkIcons">
-                  <img :src="getPicture(item.type)" class="drinkimage">
+                  <img src="../assets/coffee_01.png" v-if="isCoffee(item.type)" class="drinkimage">
+                  <img src="../assets/beer_01.png" v-else class="drinkimage">
+
                </td>
                <td class="drinkData">
                   <div>
@@ -51,6 +53,12 @@ export default {
   },
   mounted: function () {
     this.getActivities();
+    this.interActivities =  setInterval(() => {
+        this.getActivities();
+    }, 2000);
+  },
+  destroyed: function () {
+      clearInterval(this.interActivities);
   },
   computed: {
       accountId: function () {
@@ -75,8 +83,10 @@ export default {
         let date = new Date(dateString);
         return date.getDate() + '.' + ( date.getMonth() + 1 )  + '.' + date.getFullYear();
     },
-    getPicture: function (drinkType) {
-        return '../assets/' + drinkType + '.png'
+    isCoffee: function (drinkType) {
+        if(drinkType.search('coffe') >= 0) {
+            return true;
+        } else return false;
     }
   }
 };
@@ -93,8 +103,8 @@ h1 {
     font-weight: bold;
 }
 .drinkIcons {
-    padding-left: 30%;
-    min-width: 55%;
+    padding-left: 25%;
+    min-width: 50%;
 }
 
 .activities {
@@ -109,6 +119,6 @@ h1 {
 }
 
 .drinkimage {
-    max-width: 35%;
+    max-width: 30%;
 }
 </style>

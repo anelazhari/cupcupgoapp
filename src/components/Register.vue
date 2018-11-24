@@ -6,6 +6,8 @@
 
     <h1>Register</h1>
 
+    <img src="../assets/app_logo.png" class="logo">
+
     <div class="action-area">
         <div class="email">
             <input v-model="email" id="email" type="text" placeholder="Username"/> 
@@ -93,12 +95,24 @@ input {
 }
 
 .action-area {
-  margin-top: 40vh;
+padding: 0px;
+}
+
+.logo {
+    margin: 0px;
+    padding: 0px;
+    max-width: 100%;
 }
 
 .action-area button {
   margin: 10px;
   padding: 10px 40px;
   border-radius: 15px;
+}
+
+.home {
+    position: absolute;
+    top: 0px;
+    left: 50px;
 }
 </style>
