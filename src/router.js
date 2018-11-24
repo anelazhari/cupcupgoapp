@@ -5,7 +5,8 @@ import Login from './components/Login.vue'
 import Welcome from './components/Welcome.vue'
 import Activities from './components/Activities.vue'
 import Account from './components/Account.vue'
-import Tags from './components/Tags.vue' 
+import Tags from './components/Tags.vue'
+import NewTag from './components/NewTag.vue' 
 
 Vue.use(Router)
 
@@ -40,6 +41,11 @@ export default new Router({
       path: '/Tags',
       name: 'Tags',
       component: Tags
+    },
+    {
+      path: '/Tag/New',
+      name: 'TagNewTags',
+      component: NewTag
     }
   ]
 })

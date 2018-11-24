@@ -1,22 +1,19 @@
 <template>
-  <div class="tags">
-    <h1>Tags</h1>
+  <div class="newtag">
+    <h1>New Tag</h1>
 
-    <div class="tags-list">
-        <table>
-            <tr v-for="item in tagsList" :key="item.id">
-                <td>
-                    {{ item.name }}
-                </td>
-                <td>
-                    <button @click="deleteTag">Delete</button>
-                </td>
-
-            </tr>
-        </table>
+    <div class="email">
+        <label for="email">Tag Name: </label>
+        <input v-model="tagName" id="tagName" type="text" placeholder="TaggyTag"/> 
     </div>
+    <div class="tagnumber">
+        <label for="tagNumber">Tag Number:</label>
+        <input v-model="tagNumber" id="tagNumber" type="text"/> 
+    </div>
+
+
     <div>
-        <button @click="addTag">Add Tag</button>
+        <button @click="saveTag">Save</button>
     </div>
 
 
@@ -36,14 +33,15 @@
 import backendAPI from '../api/payment';
 
 export default {
-  name: "Tags",
+  name: "NewTag",
   props: {
     msg: String
   },
   data: function () {
       return {
           errorMessage: null,
-          tagsList: null
+          tagName: null,
+          tagNumber: null
       }
   },
   beforeCreate: function () {
@@ -51,18 +49,23 @@ export default {
       this.$router.push('/')
     }
   },
-  mounted: function () {
-    this.getTags();
-  },
   computed: {
       accountId: function () {
           return this.$session.get('accountId');
       }
   },
   methods: {
-    getTags: function () {
-        backendAPI.tags(this.accountId).then((data) => {
-            this.tagsList = data.tags
+    saveTag: function () {
+        if (!this.tagName) {
+            this.errorMessage = 'Please add a Tag name!';
+            return;
+        }
+        if (!this.tagNumber) {
+            this.errorMessage = 'Please add a Tag number';
+            return;
+        }
+        backendAPI.newTag(this.accountId, this.tagName, this.tagNumber).then(() => {
+            
         }).catch((error) => {
             this.errorMessage = error || 'An unforseen error happened please try again';
             this.password = null;
@@ -70,18 +73,14 @@ export default {
     },
     goBack: function () {
         this.$router.push('/Activities');
-    },
-    addTag: function () {
-        this.$router.push('/Tag/New');
-    },
-    deleteTag: function (tagId){
-
     }
-
   }
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.error {
+    color:red;
+}
 </style>
