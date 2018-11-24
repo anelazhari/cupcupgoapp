@@ -18,7 +18,6 @@
     </div>
     <div class="error">
         <p>{{errorMessage}}</p>
-        <p>Account: {{this.accountId}}</p>
     </div>
   </div>
 </template>

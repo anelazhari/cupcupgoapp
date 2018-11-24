@@ -1,18 +1,17 @@
 <template>
   <div class="activities">
     <h1>Recent Activities</h1>
-
     <div class="activities">
         <table>
             <tr v-for="item in activitiesData" :key="item.id">
                 <td>
-                    {{ item.productId }}
+                    {{ item.product_id }}
                 </td>
                 <td>
-                    {{ item.merchantId }}
+                    {{ item.price }}
                 </td>
                 <td>
-                    ${{ item.amount}}
+                    ${{ item.date}}
                 </td>
                 <td>
                     
@@ -49,50 +48,32 @@ export default {
   },
   data: function () {
       return {
-          errorMessage: null
+          errorMessage: null,
+          activitiesData: null
       }
   },
+  mounted: function () {
+    this.getActivities();
+  },
   computed: {
-      activitiesData: function () {
-          return this.getActivities();
-      },
       accountId: function () {
           return this.$session.get('accountId');
       }
   },
   methods: {
-    getActivities: function() {
-      return [
-          {
-            id: 0,
-            amount: 4.9,
-            merchantId: 12,
-            productId: 1,
-            timestamp: 23434              
-          },
-                    {
-            id: 1,
-            amount: 12.5,
-            merchantId: 12,
-            productId: 1,
-            timestamp: 23434              
-          }
-        ];
-    },
-    getActivitiesReal: function () {
-        backendAPI.activities(this.accountId).then((data) => {
-
-        }).catch((error) => {
-            this.errorMessage = error || 'An unforseen error happened please try again';
-            this.password = null;
-        });
-    },
     goAccount: function () {
         this.$router.push('/Account');
     },
     goTags: function () {
         this.$router.push('/Tags')
-    }
+    },
+    getActivities: function () {
+        backendAPI.activities(this.accountId).then((data) => {
+            this.activitiesData = data.payments;
+        }).catch((error) => {
+            this.errorMessage = error || 'An unforseen error happened please try again';
+        });
+      }
   }
 };
 </script>

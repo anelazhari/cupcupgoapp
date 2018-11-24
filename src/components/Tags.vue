@@ -38,7 +38,8 @@ export default {
   },
   data: function () {
       return {
-          errorMessage: null
+          errorMessage: null,
+          tagsList: null
       }
   },
   beforeCreate: function () {
@@ -47,29 +48,14 @@ export default {
     }
   },
   computed: {
-      tagsList: function () {
-          return this.getTags();
-      },
       accountId: function () {
           return this.$session.get('accountId');
       }
   },
   methods: {
-    getTags: function() {
-      return [
-          {
-            id: 0,
-            name: 'Taggy1'            
-          },
-            {
-            id: 1,
-            name: 'Taggy2'            
-          }
-        ];
-    },
-    getTagsReal: function () {
+    getTags: function () {
         backendAPI.tags(this.accountId).then((data) => {
-
+            this.tagsList = data
         }).catch((error) => {
             this.errorMessage = error || 'An unforseen error happened please try again';
             this.password = null;
