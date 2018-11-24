@@ -1,8 +1,8 @@
-# /register
+# auth/register
 ## POST
 ```json
 {
-    username: '',
+    email: '',
     password: ''
 }
 ```
@@ -10,11 +10,11 @@ Returns:
 - 200 OK
 - Anything else > NOTOK
 
-# /Login
+# auth/login
 ## POST
 ```json
 {
-    'username': '',
+    'email': '',
     'password: ''
 }
 ```
